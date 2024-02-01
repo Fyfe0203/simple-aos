@@ -41,7 +41,8 @@ let options = {
   useClassNames: false,
   disableMutationObserver: false,
   throttleDelay: 99,
-  debounceDelay: 50
+  debounceDelay: 50,
+  container: null,
 };
 
 // Detect not supported browsers (<=IE9)
@@ -57,7 +58,7 @@ const initializeScroll = () => {
   /**
    * Handle scroll event to animate elements on scroll
    */
-  window.addEventListener(
+  (options.container||window).addEventListener(
     'scroll',
     throttle(() => {
       handleScroll($aosElements, options.once);
